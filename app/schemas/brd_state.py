@@ -1,0 +1,32 @@
+from pydantic import BaseModel, Field
+
+
+class BRDState(BaseModel):
+
+    raw_text: str = ""
+
+    executive_summary: str = ""
+    project_objectives: str = ""
+    project_scope: str = ""
+    business_requirements: str = ""
+    key_stakeholders: str = ""
+    project_constraints: str = ""
+    cost_benefit_analysis: str = ""
+
+    business_context: dict = Field(default_factory=dict)
+
+    extracted_requirements: list = Field(default_factory=list)
+
+    ambiguities: list = Field(default_factory=list)
+
+    gaps: list = Field(default_factory=list)
+
+    conflicts: list = Field(default_factory=list)
+
+    clarification_questions: list = Field(default_factory=list)
+
+    functional_requirements: list = Field(default_factory=list)
+
+    validation_report: dict = Field(default_factory=dict)
+
+    fsd: dict = Field(default_factory=dict)
