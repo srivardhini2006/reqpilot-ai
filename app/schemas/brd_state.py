@@ -1,4 +1,5 @@
 from pydantic import BaseModel, Field
+from app.schemas.business_context import BusinessContext
 
 
 class BRDState(BaseModel):
@@ -13,7 +14,7 @@ class BRDState(BaseModel):
     project_constraints: str = ""
     cost_benefit_analysis: str = ""
 
-    business_context: dict = Field(default_factory=dict)
+    business_context: BusinessContext | None = None
 
     extracted_requirements: list = Field(default_factory=list)
 
