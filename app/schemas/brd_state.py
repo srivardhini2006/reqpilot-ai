@@ -1,6 +1,7 @@
 from pydantic import BaseModel, Field
 from app.schemas.business_context import BusinessContext
 from app.schemas.project_objectives import ProjectObjectives
+from app.schemas.project_scope import ProjectScope
 
 
 class BRDState(BaseModel):
@@ -18,6 +19,8 @@ class BRDState(BaseModel):
     business_context: BusinessContext | None = None
 
     project_objectives_analysis: ProjectObjectives | None = None
+
+    project_scope_analysis: ProjectScope | None = None
 
     extracted_requirements: list = Field(default_factory=list)
 
