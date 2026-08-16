@@ -6,6 +6,7 @@ from app.schemas.business_requirement import BusinessRequirements
 from app.schemas.ambiguity import Ambiguities
 from app.schemas.gap import Gaps
 from app.schemas.conflict import Conflicts
+from app.schemas.clarification_question import ClarificationQuestions
 
 class BRDState(BaseModel):
 
@@ -33,7 +34,7 @@ class BRDState(BaseModel):
 
     gaps: Gaps | None = None
 
-    conflicts: list = Field(default_factory=list)
+    conflicts: Conflicts | None = None
 
     clarification_questions: list = Field(default_factory=list)
 
