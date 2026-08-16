@@ -4,6 +4,7 @@ from app.schemas.project_objectives import ProjectObjectives
 from app.schemas.project_scope import ProjectScope
 from app.schemas.business_requirement import BusinessRequirements
 from app.schemas.ambiguity import Ambiguities
+from app.schemas.gap import Gaps
 
 
 class BRDState(BaseModel):
@@ -26,11 +27,11 @@ class BRDState(BaseModel):
 
     business_requirements_analysis: BusinessRequirements | None = None
 
+    ambiguities: Ambiguities | None = None
+
     extracted_requirements: list = Field(default_factory=list)
 
-    ambiguities: list = Field(default_factory=list)
-
-    gaps: list = Field(default_factory=list)
+    gaps: Gaps | None = None
 
     conflicts: list = Field(default_factory=list)
 
