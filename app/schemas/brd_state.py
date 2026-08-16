@@ -8,6 +8,7 @@ from app.schemas.gap import Gaps
 from app.schemas.conflict import Conflicts
 from app.schemas.clarification_question import ClarificationQuestions
 from app.schemas.requirement_validation import RequirementValidations
+from app.schemas.requirement_classification import RequirementClassifications
 
 class BRDState(BaseModel):
 
@@ -42,5 +43,7 @@ class BRDState(BaseModel):
     functional_requirements: list = Field(default_factory=list)
 
     validation_report: RequirementValidations | None = None
+
+    requirement_classifications: RequirementClassifications | None = None
 
     fsd: dict = Field(default_factory=dict)
