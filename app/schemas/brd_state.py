@@ -7,6 +7,7 @@ from app.schemas.ambiguity import Ambiguities
 from app.schemas.gap import Gaps
 from app.schemas.conflict import Conflicts
 from app.schemas.clarification_question import ClarificationQuestions
+from app.schemas.requirement_validation import RequirementValidations
 
 class BRDState(BaseModel):
 
@@ -36,10 +37,10 @@ class BRDState(BaseModel):
 
     conflicts: Conflicts | None = None
 
-    clarification_questions: list = Field(default_factory=list)
+    clarification_questions: ClarificationQuestions | None = None
 
     functional_requirements: list = Field(default_factory=list)
 
-    validation_report: dict = Field(default_factory=dict)
+    validation_report: RequirementValidations | None = None
 
     fsd: dict = Field(default_factory=dict)
