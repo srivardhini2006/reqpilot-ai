@@ -5,7 +5,7 @@ from app.schemas.project_scope import ProjectScope
 from app.schemas.business_requirement import BusinessRequirements
 from app.schemas.ambiguity import Ambiguities
 from app.schemas.gap import Gaps
-
+from app.schemas.conflict import Conflicts
 
 class BRDState(BaseModel):
 
