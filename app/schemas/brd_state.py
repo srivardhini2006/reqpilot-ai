@@ -1,4 +1,5 @@
-from pydantic import BaseModel, Field
+from pydantic import BaseModel
+
 from app.schemas.business_context import BusinessContext
 from app.schemas.project_objectives import ProjectObjectives
 from app.schemas.project_scope import ProjectScope
@@ -10,6 +11,8 @@ from app.schemas.clarification_question import ClarificationQuestions
 from app.schemas.requirement_validation import RequirementValidations
 from app.schemas.requirement_classification import RequirementClassifications
 from app.schemas.requirement_priority import RequirementPriorities
+from app.schemas.traceability import RequirementTraces
+
 
 class BRDState(BaseModel):
 
@@ -24,29 +27,17 @@ class BRDState(BaseModel):
     cost_benefit_analysis: str = ""
 
     business_context: BusinessContext | None = None
-
     project_objectives_analysis: ProjectObjectives | None = None
-
     project_scope_analysis: ProjectScope | None = None
-
     business_requirements_analysis: BusinessRequirements | None = None
 
     ambiguities: Ambiguities | None = None
-
-    extracted_requirements: list = Field(default_factory=list)
-
     gaps: Gaps | None = None
-
     conflicts: Conflicts | None = None
-
     clarification_questions: ClarificationQuestions | None = None
 
-    functional_requirements: list = Field(default_factory=list)
-
     validation_report: RequirementValidations | None = None
-
     requirement_classifications: RequirementClassifications | None = None
-
     requirement_priorities: RequirementPriorities | None = None
 
-    fsd: dict = Field(default_factory=dict)
+    traceability_matrix: RequirementTraces | None = None
