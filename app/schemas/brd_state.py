@@ -3,6 +3,7 @@ from app.schemas.business_context import BusinessContext
 from app.schemas.project_objectives import ProjectObjectives
 from app.schemas.project_scope import ProjectScope
 from app.schemas.business_requirement import BusinessRequirements
+from app.schemas.ambiguity import Ambiguities
 
 
 class BRDState(BaseModel):
