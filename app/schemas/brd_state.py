@@ -9,6 +9,7 @@ from app.schemas.conflict import Conflicts
 from app.schemas.clarification_question import ClarificationQuestions
 from app.schemas.requirement_validation import RequirementValidations
 from app.schemas.requirement_classification import RequirementClassifications
+from app.schemas.requirement_priority import RequirementPriorities
 
 class BRDState(BaseModel):
 
@@ -45,5 +46,7 @@ class BRDState(BaseModel):
     validation_report: RequirementValidations | None = None
 
     requirement_classifications: RequirementClassifications | None = None
+
+    requirement_priorities: RequirementPriorities | None = None
 
     fsd: dict = Field(default_factory=dict)
