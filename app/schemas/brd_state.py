@@ -12,6 +12,8 @@ from app.schemas.requirement_validation import RequirementValidations
 from app.schemas.requirement_classification import RequirementClassifications
 from app.schemas.requirement_priority import RequirementPriorities
 from app.schemas.traceability import RequirementTraces
+from app.schemas.functional_requirement import FunctionalRequirements   
+from app.schemas.use_case import UseCases
 
 
 class BRDState(BaseModel):
@@ -41,3 +43,5 @@ class BRDState(BaseModel):
     requirement_priorities: RequirementPriorities | None = None
 
     traceability_matrix: RequirementTraces | None = None
+    functional_requirements: FunctionalRequirements | None = None
+    use_cases: UseCases | None = None
