@@ -17,6 +17,7 @@ from app.schemas.use_case import UseCases
 from app.schemas.business_rule import BusinessRules
 from app.schemas.data_requirement import DataRequirements
 from app.schemas.non_functional_requirement import NonFunctionalRequirements
+from app.schemas.fsd import FSDDocument
 
 
 class BRDState(BaseModel):
@@ -51,3 +52,4 @@ class BRDState(BaseModel):
     business_rules: BusinessRules | None = None
     data_requirements: DataRequirements | None = None
     non_functional_requirements: NonFunctionalRequirements | None = None
+    fsd: FSDDocument | None = None
