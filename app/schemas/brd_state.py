@@ -19,6 +19,7 @@ from app.schemas.data_requirement import DataRequirements
 from app.schemas.non_functional_requirement import NonFunctionalRequirements
 from app.schemas.fsd import FSDDocument
 from app.schemas.test_scenario import TestScenarios
+from app.schemas.test_case import TestCases
 
 
 class BRDState(BaseModel):
@@ -55,3 +56,4 @@ class BRDState(BaseModel):
     non_functional_requirements: NonFunctionalRequirements | None = None
     fsd: FSDDocument | None = None
     test_scenarios: TestScenarios | None = None
+    test_cases: TestCases | None = None
