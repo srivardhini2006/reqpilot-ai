@@ -1,4 +1,5 @@
 from app.agents.executive_summary_agent import ExecutiveSummaryAgent
+from app.validators.pipeline_validator import PipelineValidator
 from app.agents.traceability_agent import TraceabilityAgent
 from app.agents.functional_requirement_agent import FunctionalRequirementAgent
 from app.agents.use_case_agent import UseCaseAgent
@@ -18,6 +19,8 @@ class ReqPilotPipeline:
 
     def __init__(self):
 
+        self.validator = PipelineValidator()
+
         self.executive_summary_agent = ExecutiveSummaryAgent()
 
         self.traceability_agent = TraceabilityAgent()
@@ -27,6 +30,7 @@ class ReqPilotPipeline:
         )
 
         self.use_case_agent = UseCaseAgent()
+        
 
         self.business_rule_agent = BusinessRuleAgent()
 
@@ -80,6 +84,24 @@ class ReqPilotPipeline:
 
      print("11. Test Traceability")
      state = self.test_traceability_agent.analyze(state)
+     print("12. Pipeline Validation")
+
+     validation_errors = self.validator.validate(state)
+
+     if validation_errors:
+
+      print("Pipeline validation failed.")
+
+      for error in validation_errors:
+        print(f"- {error}")
+
+      else:
+
+       print("Pipeline validation passed.")
+
+     print("ReqPilot pipeline completed.")
+
+     return state
 
      print("ReqPilot pipeline completed.")
 
