@@ -5,7 +5,7 @@ from app.services.brd_state_service import create_brd_state
 
 def main():
 
-    file_path = "data/brds/sample_brd.docx"
+    file_path = "data/brds/full_sample_brd.docx"
 
     print("===== BRD INGESTION TEST =====")
 
