@@ -1,6 +1,5 @@
 from app.agents.executive_summary_agent import ExecutiveSummaryAgent
-from app.validators.pipeline_validator import PipelineValidator
-from app.agents.traceability_agent import TraceabilityAgent
+from app.agents.requirements_agent import RequirementsAgent
 from app.agents.functional_requirement_agent import FunctionalRequirementAgent
 from app.agents.use_case_agent import UseCaseAgent
 from app.agents.business_rule_agent import BusinessRuleAgent
@@ -8,29 +7,28 @@ from app.agents.data_requirement_agent import DataRequirementAgent
 from app.agents.non_functional_requirement_agent import (
     NonFunctionalRequirementAgent
 )
+from app.agents.traceability_agent import TraceabilityAgent
 from app.agents.fsd_assembly_agent import FSDAssemblyAgent
-
 from app.agents.test_scenario_agent import TestScenarioAgent
 from app.agents.test_case_agent import TestCaseAgent
 from app.agents.test_traceability_agent import TestTraceabilityAgent
+
+from app.validators.pipeline_validator import PipelineValidator
 
 
 class ReqPilotPipeline:
 
     def __init__(self):
 
-        self.validator = PipelineValidator()
-
         self.executive_summary_agent = ExecutiveSummaryAgent()
 
-        self.traceability_agent = TraceabilityAgent()
+        self.requirements_agent = RequirementsAgent()
 
         self.functional_requirement_agent = (
             FunctionalRequirementAgent()
         )
 
         self.use_case_agent = UseCaseAgent()
-        
 
         self.business_rule_agent = BusinessRuleAgent()
 
@@ -40,6 +38,8 @@ class ReqPilotPipeline:
             NonFunctionalRequirementAgent()
         )
 
+        self.traceability_agent = TraceabilityAgent()
+
         self.fsd_assembly_agent = FSDAssemblyAgent()
 
         self.test_scenario_agent = TestScenarioAgent()
@@ -48,62 +48,63 @@ class ReqPilotPipeline:
 
         self.test_traceability_agent = TestTraceabilityAgent()
 
+        self.validator = PipelineValidator()
+
     def run(self, state):
 
-     print("Starting ReqPilot pipeline...")
+        print("Starting ReqPilot pipeline...")
 
-     print("1. Executive Summary")
-     state = self.executive_summary_agent.analyze(state)
+        print("1. Executive Summary")
+        state = self.executive_summary_agent.analyze(state)
 
-     print("2. Functional Requirements")
-     state = self.functional_requirement_agent.analyze(state)
+        print("2. Business Requirements")
+        state = self.requirements_agent.analyze(state)
 
-     print("3. Use Cases")
-     state = self.use_case_agent.analyze(state)
+        print("3. Functional Requirements")
+        state = self.functional_requirement_agent.analyze(state)
 
-     print("4. Business Rules")
-     state = self.business_rule_agent.analyze(state)
+        print("4. Use Cases")
+        state = self.use_case_agent.analyze(state)
 
-     print("5. Data Requirements")
-     state = self.data_requirement_agent.analyze(state)
+        print("5. Business Rules")
+        state = self.business_rule_agent.analyze(state)
 
-     print("6. Non-Functional Requirements")
-     state = self.non_functional_requirement_agent.analyze(state)
+        print("6. Data Requirements")
+        state = self.data_requirement_agent.analyze(state)
 
-     print("7. Requirement Traceability")
-     state = self.traceability_agent.analyze(state)
+        print("7. Non-Functional Requirements")
+        state = self.non_functional_requirement_agent.analyze(state)
 
-     print("8. FSD Assembly")
-     state = self.fsd_assembly_agent.analyze(state)
+        print("8. Requirement Traceability")
+        state = self.traceability_agent.analyze(state)
 
-     print("9. Test Scenarios")
-     state = self.test_scenario_agent.analyze(state)
+        print("9. FSD Assembly")
+        state = self.fsd_assembly_agent.analyze(state)
 
-     print("10. Test Cases")
-     state = self.test_case_agent.analyze(state)
+        print("10. Test Scenarios")
+        state = self.test_scenario_agent.analyze(state)
 
-     print("11. Test Traceability")
-     state = self.test_traceability_agent.analyze(state)
-     print("12. Pipeline Validation")
+        print("11. Test Cases")
+        state = self.test_case_agent.analyze(state)
 
-     validation_errors = self.validator.validate(state)
+        print("12. Test Traceability")
+        state = self.test_traceability_agent.analyze(state)
 
-     if validation_errors:
+        print("13. Pipeline Validation")
 
-      print("Pipeline validation failed.")
+        validation_errors = self.validator.validate(state)
 
-      for error in validation_errors:
-        print(f"- {error}")
+        if validation_errors:
 
-      else:
+            print("Pipeline validation failed.")
 
-       print("Pipeline validation passed.")
+            for error in validation_errors:
+                print(f"- {error}")
 
-     print("ReqPilot pipeline completed.")
+        else:
 
-     return state
+            print("Pipeline validation passed.")
 
-     print("ReqPilot pipeline completed.")
+        print("ReqPilot pipeline completed.")
 
-     return state
-    
+        return state
